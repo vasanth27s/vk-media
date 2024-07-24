@@ -71,7 +71,7 @@ const Form = () => {
     formData.append("picturePath", values.picture.name);
 
     const savedUserResponse = await fetch(
-      "https://vk-media.onrender.com/auth/register", // Update URL here
+      `${process.env.REACT_APP_API_URL}/auth/register`, // Use environment variable
       {
         method: "POST",
         body: formData,
@@ -88,7 +88,7 @@ const Form = () => {
   };
 
   const login = async (values, onSubmitProps) => {
-    const loggedInResponse = await fetch("https://vk-media.onrender.com/auth/login", {
+    const loggedInResponse = await fetch(`${process.env.REACT_APP_API_URL}/auth/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(values),
@@ -203,6 +203,7 @@ const Form = () => {
                         helperText={touched.occupation && errors.occupation}
                       />
                       <Box
+                        gridColumn="span 4"
                         border={`1px solid ${palette.neutral.medium}`}
                         borderRadius="5px"
                         p="1rem"
@@ -236,6 +237,7 @@ const Form = () => {
                       </Box>
                     </>
                   )}
+
                   <TextField
                     label="Email"
                     onBlur={handleBlur}
@@ -257,16 +259,16 @@ const Form = () => {
                   />
                 </Box>
 
-                {/* BUTTONS */}
-                <Box mt="2rem">
+                <Box>
                   <Button
                     fullWidth
                     type="submit"
                     sx={{
-                      padding: "1rem",
+                      m: "2rem 0",
+                      p: "1rem",
                       backgroundColor: palette.primary.main,
                       color: palette.background.alt,
-                      "&:hover": { backgroundColor: palette.primary.dark },
+                      "&:hover": { color: palette.primary.main },
                     }}
                   >
                     {isLogin ? "LOGIN" : "REGISTER"}
@@ -283,8 +285,6 @@ const Form = () => {
                         cursor: "pointer",
                         color: palette.primary.light,
                       },
-                      mt: "1rem",
-                      textAlign: "center",
                     }}
                   >
                     {isLogin

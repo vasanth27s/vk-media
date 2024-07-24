@@ -59,6 +59,7 @@ app.use('/auth', authRoutes);
 app.use('/users', userRoutes);
 app.use('/posts', postRoutes);
 
+/* Mongoose Setup */
 mongoose.set('strictQuery', true); // Set strictQuery to true to suppress the warning
 mongoose.connect(process.env.MONGO_URL, {
   useNewUrlParser: true,
