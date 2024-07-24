@@ -9,7 +9,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
   const token = useSelector((state) => state.token);
 
   const getPosts = useCallback(async () => {
-    const response = await fetch("http://localhost:3001/posts", {
+    const response = await fetch("https://vk-media.onrender.com/posts", {
       method: "GET",
       headers: { Authorization: `Bearer ${token}` },
     });
@@ -19,7 +19,7 @@ const PostsWidget = ({ userId, isProfile = false }) => {
 
   const getUserPosts = useCallback(async () => {
     const response = await fetch(
-      `http://localhost:3001/posts/${userId}/posts`,
+      `https://vk-media.onrender.com/posts/${userId}/posts`,
       {
         method: "GET",
         headers: { Authorization: `Bearer ${token}` },

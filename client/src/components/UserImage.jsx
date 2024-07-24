@@ -8,7 +8,7 @@ const UserImage = ({ image, size = "60px" }) => {
         width={size}
         height={size}
         alt="user"
-        src={`http://localhost:3001/assets/${image}`} // Update URL here
+        src={`https://vk-media.onrender.com/assets/${image}`} // Update URL here
       />
     </Box>
   );
